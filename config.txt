@@ -20,11 +20,12 @@
 # instead of the command-line
 #-dcoin blake2s
 
--rmode 1
--minRigSpeed 100
+-logsmaxsize 10
+-rmode 2
+-minRigSpeed 210
 -retrydelay 5
 -tt 60,60,60,60,60,60,60,60
--cvddc 900,900,900,900,900,900,900,900
--mvddc 920,920,920,920,920,920,920,920
--cclock *:1150
+-cvddc 865,865,865,865,865,865,865,865
+-mvddc 900,900,900,900,900,900,900,900
+-cclock *:1130
 -mclock *:2000

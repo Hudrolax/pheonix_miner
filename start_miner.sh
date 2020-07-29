@@ -6,4 +6,4 @@
 pause=5
 echo "sleep $pause sec. before start miner"
 sleep $pause
-/root/pheonix/PhoenixMiner -pool coinotron.com:3344 -wal Hudro.zeon -config config.txt
+sudo /root/pheonix/PhoenixMiner -pool coinotron.com:3344 -wal Hudro.zeon -config /root/pheonix/config.txt
