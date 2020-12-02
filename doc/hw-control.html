@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hardware control options &mdash; PhoenixMiner 5.0e documentation</title>
+  <title>Hardware control options &mdash; PhoenixMiner 5.3b documentation</title>
   
 
   
@@ -173,6 +173,17 @@
 <h1>Hardware control options<a class="headerlink" href="#hardware-control-options" title="Permalink to this headline">¶</a></h1>
 <p>Here are some important notes about the hardware control options:</p>
 <ul class="simple">
+<li><p>Most recent Nvidia drivers require running as administrator (or as root under Linux) to allow hardware control, so you must run
+PhoenixMiner as administrator for the VRAM timing options to work.</p></li>
+<li><p>The AMD memory timing options (<code class="docutils literal notranslate"><span class="pre">-rxboost</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmr</span></code>, <code class="docutils literal notranslate"><span class="pre">-straps</span></code>), with the notable exception of <code class="docutils literal notranslate"><span class="pre">-mt</span></code>, also require running as administrator
+(or as root under Linux)</p></li>
+<li><p>When using the VRAM timing options (<code class="docutils literal notranslate"><span class="pre">-straps</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt1</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt2</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt3</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmr</span></code>), start with lower values
+and make sure that the cards are stable before trying higher and more aggressive settings. You can use <code class="docutils literal notranslate"><span class="pre">-straps</span></code> along with
+the other options. For example <code class="docutils literal notranslate"><span class="pre">-straps</span> <span class="pre">1</span></code> <code class="docutils literal notranslate"><span class="pre">-vmt1</span> <span class="pre">60</span></code> will use the timings from 1st strap level but -vmt1 will be set to 60
+instead of whatever value is specified by the 1st strap level. In such case the <code class="docutils literal notranslate"><span class="pre">-straps</span></code> option must be specified first.</p></li>
+<li><p>Generally, the <code class="docutils literal notranslate"><span class="pre">-vmt3</span></code> option has little effect on the hashrate, so first try adjusting the other parameters.</p></li>
+<li><p>The VRAM timing options can be quite different between the GPUs, even when the GPUs are the same model. Therefore, you can
+(and probably should) specify the VRAM timing options per-GPU.</p></li>
 <li><p>If you specify a single value (e.g. <code class="docutils literal notranslate"><span class="pre">-cvddc</span> <span class="pre">1150</span></code>), it will be used on all cards. Specify different
 values for each card like this (separate with comma): <code class="docutils literal notranslate"><span class="pre">-cvddc</span> <span class="pre">1100,1100,1150,1120,1090</span></code>
 If the specified values are less than the number of GPUs, the rest of GPUs will use the default values.</p></li>

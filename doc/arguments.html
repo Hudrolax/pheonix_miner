@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Command-line arguments &mdash; PhoenixMiner 5.0e documentation</title>
+  <title>Command-line arguments &mdash; PhoenixMiner 5.3b documentation</title>
   
 
   
@@ -232,12 +232,6 @@ so you can use the same command line options as the ones you would have used wit
 <dt class="field-odd">etp</dt>
 <dd class="field-odd"><p>Metaverse ETP</p>
 </dd>
-<dt class="field-even">pgc</dt>
-<dd class="field-even"><p>Pegascoin</p>
-</dd>
-<dt class="field-odd">akroma</dt>
-<dd class="field-odd"><p>Akroma</p>
-</dd>
 <dt class="field-even">whale</dt>
 <dd class="field-even"><p>WhaleCoin</p>
 </dd>
@@ -253,12 +247,6 @@ so you can use the same command line options as the ones you would have used wit
 <dt class="field-even">egem</dt>
 <dd class="field-even"><p>EtherGem</p>
 </dd>
-<dt class="field-odd">aura</dt>
-<dd class="field-odd"><p>Aura</p>
-</dd>
-<dt class="field-even">gen</dt>
-<dd class="field-even"><p>Genom</p>
-</dd>
 <dt class="field-odd">clo</dt>
 <dd class="field-odd"><p>Callisto</p>
 </dd>
@@ -271,29 +259,26 @@ so you can use the same command line options as the ones you would have used wit
 <dt class="field-even">etho</dt>
 <dd class="field-even"><p>Ether-1</p>
 </dd>
-<dt class="field-odd">etcc</dt>
-<dd class="field-odd"><p>EtherCC</p>
+<dt class="field-odd">yoc</dt>
+<dd class="field-odd"><p>Yocoin</p>
 </dd>
-<dt class="field-even">yoc</dt>
-<dd class="field-even"><p>Yocoin</p>
+<dt class="field-even">b2g</dt>
+<dd class="field-even"><p>Bitcoiin2Gen</p>
 </dd>
-<dt class="field-odd">b2g</dt>
-<dd class="field-odd"><p>Bitcoiin2Gen</p>
+<dt class="field-odd">esn</dt>
+<dd class="field-odd"><p>Ethersocial</p>
 </dd>
-<dt class="field-even">esn</dt>
-<dd class="field-even"><p>Ethersocial</p>
+<dt class="field-even">ath</dt>
+<dd class="field-even"><p>Atheios</p>
 </dd>
-<dt class="field-odd">ath</dt>
-<dd class="field-odd"><p>Atheios</p>
+<dt class="field-odd">reosc</dt>
+<dd class="field-odd"><p>REOSC</p>
 </dd>
-<dt class="field-even">reosc</dt>
-<dd class="field-even"><p>REOSC</p>
+<dt class="field-even">qkc</dt>
+<dd class="field-even"><p>QuarkChain</p>
 </dd>
-<dt class="field-odd">qkc</dt>
-<dd class="field-odd"><p>QuarkChain</p>
-</dd>
-<dt class="field-even">bci</dt>
-<dd class="field-even"><p>Bitcoin Interest</p>
+<dt class="field-odd">bci</dt>
+<dd class="field-odd"><p>Bitcoin Interest</p>
 </dd>
 </dl>
 </dd>
@@ -353,7 +338,7 @@ so you can use the same command line options as the ones you would have used wit
 </div>
 <div class="section" id="remote-control-options">
 <h2>Remote control options<a class="headerlink" href="#remote-control-options" title="Permalink to this headline">¶</a></h2>
-<dl class="simple">
+<dl>
 <dt>-cdm &lt;n&gt;</dt><dd><p>Selects the level of support of the CDM remote monitoring:</p>
 <dl class="field-list simple">
 <dt class="field-odd">0</dt>
@@ -371,28 +356,20 @@ so you can use the same command line options as the ones you would have used wit
 </dd>
 <dt>-cdmpass &lt;pass&gt;</dt><dd><p>Set the CDM remote monitoring password</p>
 </dd>
-</dl>
-<dl class="option-list">
-<dt><kbd><span class="option">-c<var>dmrs</var></span></kbd></dt>
-<dd><p>Reload the settings if <code class="docutils literal notranslate"><span class="pre">config.txt</span></code> is edited/uploaded remotely. Note that most options require restart in order to change.</p>
-<p>Currently the following options can be changed without restarting: -mi, -gt, -sci, -clf, -nvf, and all hardware control parameters (-tt, -fanmin, -fanmax, -powlim, -tmax, -cclock, -cvddc, -mclock, -mvddc).</p>
+<dt>-cdmrs</dt><dd><p>Reload the settings if <code class="docutils literal notranslate"><span class="pre">config.txt</span></code> is edited/uploaded remotely. Note that most options require restart in order to change.</p>
+<p>Currently the following options can be changed without restarting: <code class="docutils literal notranslate"><span class="pre">-mi</span></code>, <code class="docutils literal notranslate"><span class="pre">-gt</span></code>, <code class="docutils literal notranslate"><span class="pre">-sci</span></code>, <code class="docutils literal notranslate"><span class="pre">-clf</span></code>, <code class="docutils literal notranslate"><span class="pre">-nvf</span></code>, <code class="docutils literal notranslate"><span class="pre">-gpow</span></code>, and most of the hardware control parameters (<code class="docutils literal notranslate"><span class="pre">-tt</span></code>, <code class="docutils literal notranslate"><span class="pre">-fcm</span></code>, <code class="docutils literal notranslate"><span class="pre">-fanmin</span></code>, <code class="docutils literal notranslate"><span class="pre">-fanmax</span></code>, <code class="docutils literal notranslate"><span class="pre">-powlim</span></code>, <code class="docutils literal notranslate"><span class="pre">-tmax</span></code>, <code class="docutils literal notranslate"><span class="pre">-ttli</span></code>, <code class="docutils literal notranslate"><span class="pre">-cclock</span></code>, <code class="docutils literal notranslate"><span class="pre">-cvddc</span></code>, <code class="docutils literal notranslate"><span class="pre">-mclock</span></code>, <code class="docutils literal notranslate"><span class="pre">-mvddc</span></code>, <code class="docutils literal notranslate"><span class="pre">-ppf</span></code>, <code class="docutils literal notranslate"><span class="pre">-straps</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt1</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt2</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt3</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmr</span></code>).</p>
 </dd>
 </dl>
 </div>
 <div class="section" id="mining-options">
 <h2>Mining options<a class="headerlink" href="#mining-options" title="Permalink to this headline">¶</a></h2>
-<dl class="option-list">
-<dt><kbd><span class="option">-a<var>md</var></span></kbd></dt>
-<dd><p>Use only AMD cards</p>
+<dl>
+<dt>-amd</dt><dd><p>Use only AMD cards</p>
 </dd>
-<dt><kbd><span class="option">-a<var>cm</var></span></kbd></dt>
-<dd><p>Turn on AMD compute mode on the supported GPUs. This is equivalent of pressing <code class="docutils literal notranslate"><span class="pre">y</span></code> in the miner console.</p>
+<dt>-acm</dt><dd><p>Turn on AMD compute mode on the supported GPUs. This is equivalent of pressing <code class="docutils literal notranslate"><span class="pre">y</span></code> in the miner console.</p>
 </dd>
-<dt><kbd><span class="option">-n<var>vidia</var></span></kbd></dt>
-<dd><p>Use only Nvidia cards</p>
+<dt>-nvidia</dt><dd><p>Use only Nvidia cards</p>
 </dd>
-</dl>
-<dl class="simple">
 <dt>-gpus &lt;123 ..n&gt;</dt><dd><p>Use only the specified GPUs (if more than 10, separate the indexes with comma)</p>
 </dd>
 <dt>-mi &lt;n&gt;</dt><dd><p>Set the mining intensity (0 to 14; 12 is the default for new kernels). You may specify this option per-GPU.</p>
@@ -425,6 +402,9 @@ so you can use the same command line options as the ones you would have used wit
 </dd>
 <dt>-eres &lt;n&gt;</dt><dd><p>Allocate DAG buffers big enough for n epochs ahead (default: 2) to avoid allocating new buffers on each DAG epoch switch, which should improve DAG switch stability. You may specify this option per-GPU.</p>
 </dd>
+<dt>-daglim &lt;n&gt;</dt><dd><p>(AMD Polaris, Baffin, Tonga, or Fiji cards only) Limit the DAG size to &lt;n&gt; MB to allow mining on 4 GB cards a few weeks after epoch 373 on Windows (or 381 on Linux). The possible values except the exact DAG limit are also 0 (turn off the DAG limit), 1 (automatic DAG limit size, usually 4023 MB under Windows; this is the default). Note that the hashrate will drop significantly with each epoch after the DAG limit is in effect. If the hashrate drops too much (e.g. from 28 MH/s to just
+2-3 MH/s, you need to use lower value, for example <code class="docutils literal notranslate"><span class="pre">-daglim</span> <span class="pre">3996</span></code> or even lower.</p>
+</dd>
 <dt>-dagrestart &lt;n&gt;</dt><dd><p>Restart the miner when allocating buffer for a new DAG epoch. The possible values are: 0 - never, 1 - always, 2 - auto (the miner decides depending on the driver version). This is relevant for 4 GB AMD cards, which may have problems with new DAG epochs after epoch 350.</p>
 </dd>
 <dt>-lidag &lt;n&gt;</dt><dd><p>Slow down DAG generation to avoid crashes when switching DAG epochs (0-3, default: 0 - fastest, 3 - slowest). You may specify this option per-GPU.</p>
@@ -435,13 +415,8 @@ so you can use the same command line options as the ones you would have used wit
 </dd>
 <dt>-rvram &lt;n&gt;</dt><dd><p>Minimum free VRAM in MB (-1: don’t check; default: 384 for Windows, and 128 for Linux)</p>
 </dd>
-</dl>
-<dl class="option-list">
-<dt><kbd><span class="option">-a<var>ltinit</var></span></kbd></dt>
-<dd><p>Use alternative way to initialize AMD cards to prevent startup crashes</p>
+<dt>-altinit</dt><dd><p>Use alternative way to initialize AMD cards to prevent startup crashes</p>
 </dd>
-</dl>
-<dl>
 <dt>-wdog &lt;n&gt;</dt><dd><p>Enable watchdog timer: 1 - yes, 0 - no (1 is the default). The watchdog timer checks periodically if any of the GPUs freezes and if it does, restarts the miner (see the <code class="docutils literal notranslate"><span class="pre">-rmode</span></code> command-line parameter for the restart modes)</p>
 </dd>
 <dt>-wdtimeout &lt;n&gt;</dt><dd><p>Watchdog timeout (30 - 300; default 45 seconds). You can use this parameter to increase the default watchdog timeout in case it restarts the miner needlessly</p>
@@ -482,13 +457,9 @@ so you can use the same command line options as the ones you would have used wit
 </dd>
 <dt>-li &lt;n&gt;</dt><dd><p>Another way to lower the GPU usage. Bigger n values mean less GPU utilization; the default is 0. You may specify this option per-GPU.</p>
 </dd>
-</dl>
-<dl class="option-list">
-<dt><kbd><span class="option">-r<var>esetoc</var></span></kbd></dt>
-<dd><p>Reset the HW overclocking settings on startup</p>
+<dt>-resetoc</dt><dd><p>Reset the HW overclocking settings on startup</p>
 </dd>
-<dt><kbd><span class="option">-l<var>eaveoc</var></span></kbd></dt>
-<dd><p>Do not reset overclocking settings when closing the miner</p>
+<dt>-leaveoc</dt><dd><p>Do not reset overclocking settings when closing the miner</p>
 </dd>
 </dl>
 </div>
@@ -533,25 +504,40 @@ so you can use the same command line options as the ones you would have used wit
 </dd>
 <dt>-mt &lt;n&gt;</dt><dd><p>VRAM timings (AMD under Windows only): 0 - default VBIOS values; 1 - faster timings; 2 - fastest timings. The default is 0. This is useful for mining with AMD cards without modding the VBIOS.</p>
 </dd>
+<dt>-leavemt</dt><dd><p>Do not reset memory timing level (<code class="docutils literal notranslate"><span class="pre">-mt</span></code>) to 0 when closing</p>
+</dd>
+<dt>-ttli &lt;n&gt;</dt><dd><p>Lower GPU usage when GPU temperature is above n deg C. The default value is 0, which means do not lower the usage regardless of the GPU temperature. This option is useful whenever -tmax is not working. If you are using both <code class="docutils literal notranslate"><span class="pre">-tt</span></code> and <code class="docutils literal notranslate"><span class="pre">-ttli</span></code> options, the temperature in <code class="docutils literal notranslate"><span class="pre">-tt</span></code> should be lower than the <code class="docutils literal notranslate"><span class="pre">-ttli</span></code> to avoid throttling the GPUs without using the fans to properly cool them first.</p>
+</dd>
+<dt>-straps &lt;n&gt;</dt><dd><p>Memory strap level (Nvidia cards 10x0 series only). The possible values are 0 to 6. 0 is the default value and uses the default timings from the VBIOS. Each strap level corresponds to a predefined combination of memory timings (<code class="docutils literal notranslate"><span class="pre">-vmt1</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt2</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt3</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmr</span></code>). Strap level 3 is the fastest predefined level and may not work on most cards, 1 is the slowest (but still faster than the default timings). Strap levels 4 to 6 are the same as 1 to 3 but with less aggressive refresh rates (i.e. lower <code class="docutils literal notranslate"><span class="pre">-vmr</span></code> values).</p>
+</dd>
+<dt>-straps &lt;n&gt;</dt><dd><p>Memory strap level (AMD Vega cards only). The possible values are 0 to 5. 0 is the default value and uses the default timings from the VBIOS. Each strap level corresponds to a predefined combination of memory timings. Strap level 5 is
+the fastest level and may not work on most cards, 1 is the slowest (but still faster than the default timings). Note that straps for AMD cards are experimental and may lead to crashes or instability. <code class="docutils literal notranslate"><span class="pre">-vmt1</span></code>, <code class="docutils literal notranslate"><span class="pre">-vmt2</span></code>, and <code class="docutils literal notranslate"><span class="pre">-vmt3</span></code> parameters
+have no effect on AMD cards</p>
+</dd>
+<dt>-vmt1 &lt;n&gt;</dt><dd><p>Memory timing parameter 1 (0 to 100, default 0)</p>
+</dd>
+<dt>-vmt2 &lt;n&gt;</dt><dd><p>Memory timing parameter 2 (0 to 100, default 0)</p>
+</dd>
+<dt>-vmt3 &lt;n&gt;</dt><dd><p>Memory timing parameter 3 (0 to 100, default 0)</p>
+</dd>
+<dt>-vmr &lt;n&gt;</dt><dd><p>Memory refresh rate (0 to 100, default 0). For AMD cards you may also use <code class="docutils literal notranslate"><span class="pre">-rxboost</span></code></p>
+</dd>
+<dt>-nvmem &lt;n&gt;</dt><dd><p>Force using straps on unsupported Nvidia GPUs (0 - do not force, 1 - GDDR5, 2 - GDDR5X). Make sure that the parameter matches your GPU memory type. You can try this if your card is Pascal-based but when you try to use <code class="docutils literal notranslate"><span class="pre">-straps</span></code> or any other memory timing option, the card is shown as “unsupported”.</p>
+</dd>
+<dt>-rxboost &lt;n&gt;</dt><dd><p>Memory refresh rate on AMD cards (0 - default values, 1 - predefined value that should work on most cards, 2 to 100 - increasingly aggressive settings). If you want to fine tune the value, you may run
+the miner with <code class="docutils literal notranslate"><span class="pre">-rxboost</span> <span class="pre">1</span></code>, write down the corresponding <code class="docutils literal notranslate"><span class="pre">-vmr</span></code> values that are showed in the log file, and then use <code class="docutils literal notranslate"><span class="pre">-vmr</span></code> instead with adjusted values.</p>
+</dd>
 </dl>
 </div>
 <div class="section" id="general-options">
 <h2>General Options<a class="headerlink" href="#general-options" title="Permalink to this headline">¶</a></h2>
-<dl class="option-list">
-<dt><kbd><span class="option">-l<var>ist</var></span></kbd></dt>
-<dd><p>List the detected GPUs devices and exit</p>
-</dd>
-</dl>
 <dl class="simple">
+<dt>-list</dt><dd><p>List the detected GPUs devices and exit</p>
+</dd>
 <dt>-v,–version</dt><dd><p>Show the version and exit</p>
 </dd>
-</dl>
-<dl class="option-list">
-<dt><kbd><span class="option">-v<var>s</var></span></kbd></dt>
-<dd><p>Show short version string (e.g. <code class="docutils literal notranslate"><span class="pre">4.1c</span></code>) and exit</p>
+<dt>-vs</dt><dd><p>Show short version string (e.g. <code class="docutils literal notranslate"><span class="pre">4.1c</span></code>) and exit</p>
 </dd>
-</dl>
-<dl class="simple">
 <dt>-h,–help</dt><dd><p>Show information about the command-line options and exit</p>
 </dd>
 </dl>

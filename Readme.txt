@@ -1,4 +1,4 @@
--[ PhoenixMiner 5.0e documentation ]-
+-[ PhoenixMiner 5.3b documentation ]-
 
 * Introduction
 
@@ -48,15 +48,16 @@
 Introduction
 ************
 
-PhoenixMiner is fast (arguably the fastest) **Ethash** (ETH, ETC,
+PhoenixMiner is fast (arguably the fastest) **Ethash** (Ethereum, ETC,
 etc.) miner that supports both AMD and Nvidia cards (including in
 mixed mining rigs). It runs under Windows x64 and Linux x64 and has a
 developer fee of 0.65% (the lowest in the industry). This means that
 every 90 minutes the miner will mine for us, its developers, for 35
 seconds.
 
-PhoenixMiner also supports **Ubqhash** for mining UBQ, **ProgPOW** for
-mining BCI, and **dual mining** Ethash/Ubqhash with **Blake2s**.
+PhoenixMiner also supports **ETCHash** for mining ETC, **Ubqhash** for
+mining UBQ, **ProgPOW** for mining BCI, and **dual mining**
+Ethash/ETCHash/Ubqhash with **Blake2s**.
 
 The hashrate is generally higher than Claymore’s Ethereum miner (we
 have measured about 0.4-1.3% hashrate improvement but your results may
@@ -85,7 +86,7 @@ Quick start
 Download and install
 ====================
 
-You can download PhoenixMiner 5.0e from here:
+You can download PhoenixMiner 5.3b from here:
 
 https://mega.nz/#F!2VskDJrI!lsQsz1CdDe8x5cH3L8QaBw (MEGA)
 
@@ -95,7 +96,7 @@ you want to mine BCI with Nvdia cards under Windows.
 If you want to check the integrity of the downloaded file, you can use
 the hashes (checksums) that are provided in our bitcointalk.org thread
 (https://bitcointalk.org/index.php?topic=2647654.0) or the file
-"PhoenixMiner_4.9c_checksums.txt" which is in the same MEGA folder as
+"PhoenixMiner_5.3b_checksums.txt" which is in the same MEGA folder as
 the main PhoenixMiner archive.
 
 Note: **Linux:** Under Linux you need to replace "PhoenixMiner.exe"
@@ -133,10 +134,10 @@ coinotron.com (ETH):
       PhoenixMiner.exe -pool coinotron.com:3344 -wal YourLoginName.WorkerName -pass x -proto 1
 
 ethermine.org (ETC):
-      PhoenixMiner.exe -pool eu1-etc.ethermine.org:4444 -wal YourEtcWalletAddress.WorkerName
+      PhoenixMiner.exe -pool eu1-etc.ethermine.org:4444 -wal YourEtcWalletAddress.WorkerName -coin etc
 
 epool.io (ETC):
-      PhoenixMiner.exe -pool eu.etc.epool.io:8008 -pool2 us.etc.epool.io:8008 -worker WorkerName -wal YourEtcWalletAddress -pass x -retrydelay 2
+      PhoenixMiner.exe -pool eu.etc.epool.io:8008 -pool2 us.etc.epool.io:8008 -worker WorkerName -wal YourEtcWalletAddress -pass x -retrydelay 2 -coin etc
 
 whalesburg.com (ethash auto-switching):
       PhoenixMiner.exe -pool proxy.pool.whalesburg.com:8082 -wal YourEthWalletAddress -worker WorkerName -proto 2
@@ -236,11 +237,11 @@ Features, requirements, and limitations
   your rig
 
 * Supports devfee on alternative ethash currencies like ETC, EXP,
-  Music, UBQ, Pirl, Ellaism, Metaverse ETP, Akroma, WhaleCoin, and
-  Victorium. This avoids any additional loses and instabilities
-  becuase of additional DAG generation, and also allows you to use
-  older cards with small VRAM or low hashate on current DAG epochs
-  (e.g. GTX970, 280X).
+  Music, UBQ, Pirl, Ellaism, Metaverse ETP, WhaleCoin, and Victorium.
+  This avoids any additional loses and instabilities becuase of
+  additional DAG generation, and also allows you to use older cards
+  with small VRAM or low hashate on current DAG epochs (e.g. GTX970,
+  280X).
 
 * Supports the Ubqhash algorithm for the UBQ coin. Please note that
   you must add "-coin ubq" to your command line (or "COIN: ubq" to
@@ -348,12 +349,6 @@ Pool options
    etp:
       Metaverse ETP
 
-   pgc:
-      Pegascoin
-
-   akroma:
-      Akroma
-
    whale:
       WhaleCoin
 
@@ -369,12 +364,6 @@ Pool options
    egem:
       EtherGem
 
-   aura:
-      Aura
-
-   gen:
-      Genom
-
    clo:
       Callisto
 
@@ -386,9 +375,6 @@ Pool options
 
    etho:
       Ether-1
-
-   etcc:
-      EtherCC
 
    yoc:
       Yocoin
@@ -526,30 +512,28 @@ Remote control options
    Set the CDM remote monitoring password
 
 -cdmrs
+   Reload the settings if "config.txt" is edited/uploaded remotely.
+   Note that most options require restart in order to change.
 
-Reload the settings if "config.txt" is edited/uploaded remotely. Note
-that most options require restart in order to change.
-
-Currently the following options can be changed without restarting:
--mi, -gt, -sci, -clf, -nvf, and all hardware control parameters (-tt,
--fanmin, -fanmax, -powlim, -tmax, -cclock, -cvddc, -mclock, -mvddc).
+   Currently the following options can be changed without restarting:
+   "-mi", "-gt", "-sci", "-clf", "-nvf", "-gpow", and most of the
+   hardware control parameters ("-tt", "-fcm", "-fanmin", "-fanmax",
+   "-powlim", "-tmax", "-ttli", "-cclock", "-cvddc", "-mclock",
+   "-mvddc", "-ppf", "-straps", "-vmt1", "-vmt2", "-vmt3", "-vmr").
 
 
 Mining options
 ==============
 
 -amd
-
-Use only AMD cards
+   Use only AMD cards
 
 -acm
-
-Turn on AMD compute mode on the supported GPUs. This is equivalent of
-pressing "y" in the miner console.
+   Turn on AMD compute mode on the supported GPUs. This is equivalent
+   of pressing "y" in the miner console.
 
 -nvidia
-
-Use only Nvidia cards
+   Use only Nvidia cards
 
 -gpus <123 ..n>
    Use only the specified GPUs (if more than 10, separate the indexes
@@ -632,6 +616,17 @@ Use only Nvidia cards
    avoid allocating new buffers on each DAG epoch switch, which should
    improve DAG switch stability. You may specify this option per-GPU.
 
+-daglim <n>
+   (AMD Polaris, Baffin, Tonga, or Fiji cards only) Limit the DAG size
+   to <n> MB to allow mining on 4 GB cards a few weeks after epoch 373
+   on Windows (or 381 on Linux). The possible values except the exact
+   DAG limit are also 0 (turn off the DAG limit), 1 (automatic DAG
+   limit size, usually 4023 MB under Windows; this is the default).
+   Note that the hashrate will drop significantly with each epoch
+   after the DAG limit is in effect. If the hashrate drops too much
+   (e.g. from 28 MH/s to just 2-3 MH/s, you need to use lower value,
+   for example "-daglim 3996" or even lower.
+
 -dagrestart <n>
    Restart the miner when allocating buffer for a new DAG epoch. The
    possible values are: 0 - never, 1 - always, 2 - auto (the miner
@@ -661,8 +656,8 @@ Use only Nvidia cards
    and 128 for Linux)
 
 -altinit
-
-Use alternative way to initialize AMD cards to prevent startup crashes
+   Use alternative way to initialize AMD cards to prevent startup
+   crashes
 
 -wdog <n>
    Enable watchdog timer: 1 - yes, 0 - no (1 is the default). The
@@ -759,12 +754,10 @@ Use alternative way to initialize AMD cards to prevent startup crashes
    utilization; the default is 0. You may specify this option per-GPU.
 
 -resetoc
-
-Reset the HW overclocking settings on startup
+   Reset the HW overclocking settings on startup
 
 -leaveoc
-
-Do not reset overclocking settings when closing the miner
+   Do not reset overclocking settings when closing the miner
 
 
 Hardware control options (you may specify these options per-GPU)
@@ -847,20 +840,78 @@ Hardware control options (you may specify these options per-GPU)
    - faster timings; 2 - fastest timings. The default is 0. This is
    useful for mining with AMD cards without modding the VBIOS.
 
+-leavemt
+   Do not reset memory timing level ("-mt") to 0 when closing
+
+-ttli <n>
+   Lower GPU usage when GPU temperature is above n deg C. The default
+   value is 0, which means do not lower the usage regardless of the
+   GPU temperature. This option is useful whenever -tmax is not
+   working. If you are using both "-tt" and "-ttli" options, the
+   temperature in "-tt" should be lower than the "-ttli" to avoid
+   throttling the GPUs without using the fans to properly cool them
+   first.
+
+-straps <n>
+   Memory strap level (Nvidia cards 10x0 series only). The possible
+   values are 0 to 6. 0 is the default value and uses the default
+   timings from the VBIOS. Each strap level corresponds to a
+   predefined combination of memory timings ("-vmt1", "-vmt2",
+   "-vmt3", "-vmr"). Strap level 3 is the fastest predefined level and
+   may not work on most cards, 1 is the slowest (but still faster than
+   the default timings). Strap levels 4 to 6 are the same as 1 to 3
+   but with less aggressive refresh rates (i.e. lower "-vmr" values).
+
+-straps <n>
+   Memory strap level (AMD Vega cards only). The possible values are 0
+   to 5. 0 is the default value and uses the default timings from the
+   VBIOS. Each strap level corresponds to a predefined combination of
+   memory timings. Strap level 5 is the fastest level and may not work
+   on most cards, 1 is the slowest (but still faster than the default
+   timings). Note that straps for AMD cards are experimental and may
+   lead to crashes or instability. "-vmt1", "-vmt2", and "-vmt3"
+   parameters have no effect on AMD cards
+
+-vmt1 <n>
+   Memory timing parameter 1 (0 to 100, default 0)
+
+-vmt2 <n>
+   Memory timing parameter 2 (0 to 100, default 0)
+
+-vmt3 <n>
+   Memory timing parameter 3 (0 to 100, default 0)
+
+-vmr <n>
+   Memory refresh rate (0 to 100, default 0). For AMD cards you may
+   also use "-rxboost"
+
+-nvmem <n>
+   Force using straps on unsupported Nvidia GPUs (0 - do not force, 1
+   - GDDR5, 2 - GDDR5X). Make sure that the parameter matches your GPU
+   memory type. You can try this if your card is Pascal-based but when
+   you try to use "-straps" or any other memory timing option, the
+   card is shown as “unsupported”.
+
+-rxboost <n>
+   Memory refresh rate on AMD cards (0 - default values, 1 -
+   predefined value that should work on most cards, 2 to 100 -
+   increasingly aggressive settings). If you want to fine tune the
+   value, you may run the miner with "-rxboost 1", write down the
+   corresponding "-vmr" values that are showed in the log file, and
+   then use "-vmr" instead with adjusted values.
+
 
 General Options
 ===============
 
 -list
-
-List the detected GPUs devices and exit
+   List the detected GPUs devices and exit
 
 -v,–version
    Show the version and exit
 
 -vs
-
-Show short version string (e.g. "4.1c") and exit
+   Show short version string (e.g. "4.1c") and exit
 
 -h,–help
    Show information about the command-line options and exit
@@ -1014,6 +1065,30 @@ Hardware control options
 ************************
 
 Here are some important notes about the hardware control options:
+
+* Most recent Nvidia drivers require running as administrator (or as
+  root under Linux) to allow hardware control, so you must run
+  PhoenixMiner as administrator for the VRAM timing options to work.
+
+* The AMD memory timing options ("-rxboost", "-vmr", "-straps"),
+  with the notable exception of "-mt", also require running as
+  administrator (or as root under Linux)
+
+* When using the VRAM timing options ("-straps", "-vmt1", "-vmt2",
+  "-vmt3", "-vmr"), start with lower values and make sure that the
+  cards are stable before trying higher and more aggressive settings.
+  You can use "-straps" along with the other options. For example
+  "-straps 1" "-vmt1 60" will use the timings from 1st strap level but
+  -vmt1 will be set to 60 instead of whatever value is specified by
+  the 1st strap level. In such case the "-straps" option must be
+  specified first.
+
+* Generally, the "-vmt3" option has little effect on the hashrate,
+  so first try adjusting the other parameters.
+
+* The VRAM timing options can be quite different between the GPUs,
+  even when the GPUs are the same model. Therefore, you can (and
+  probably should) specify the VRAM timing options per-GPU.
 
 * If you specify a single value (e.g. "-cvddc 1150"), it will be
   used on all cards. Specify different values for each card like this
