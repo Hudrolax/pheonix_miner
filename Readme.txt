@@ -1,4 +1,4 @@
--[ PhoenixMiner 5.3b documentation ]-
+-[ PhoenixMiner 5.5c documentation ]-
 
 * Introduction
 
@@ -59,16 +59,13 @@ PhoenixMiner also supports **ETCHash** for mining ETC, **Ubqhash** for
 mining UBQ, **ProgPOW** for mining BCI, and **dual mining**
 Ethash/ETCHash/Ubqhash with **Blake2s**.
 
-The hashrate is generally higher than Claymore’s Ethereum miner (we
+The hashrate is generally higher than Claymore's Ethereum miner (we
 have measured about 0.4-1.3% hashrate improvement but your results may
 be slightly lower or higher depending on the GPUs, drivers, and other
-variables). To achieve highest possible hashrate on AMD cards you may
-need to manually adjust the GPU tune factor (a number from 8 to about
-400, which can be changed interactively with the "+" and "-" keys
-while the miner is running).
+variables).
 
-If you have used Claymore’s Dual Ethereum miner, you can switch to
-PhoenixMiner with minimal hassle as we support most of Claymore’s
+If you have used Claymore's Dual Ethereum miner, you can switch to
+PhoenixMiner with minimal hassle as we support most of Claymore's
 command-line options and configuration files.
 
 Please note that PhoenixMiner is extensively tested on many mining
@@ -86,7 +83,7 @@ Quick start
 Download and install
 ====================
 
-You can download PhoenixMiner 5.3b from here:
+You can download PhoenixMiner 5.5c from here:
 
 https://mega.nz/#F!2VskDJrI!lsQsz1CdDe8x5cH3L8QaBw (MEGA)
 
@@ -96,7 +93,7 @@ you want to mine BCI with Nvdia cards under Windows.
 If you want to check the integrity of the downloaded file, you can use
 the hashes (checksums) that are provided in our bitcointalk.org thread
 (https://bitcointalk.org/index.php?topic=2647654.0) or the file
-"PhoenixMiner_5.3b_checksums.txt" which is in the same MEGA folder as
+"PhoenixMiner_5.5c_checksums.txt" which is in the same MEGA folder as
 the main PhoenixMiner archive.
 
 Note: **Linux:** Under Linux you need to replace "PhoenixMiner.exe"
@@ -211,12 +208,12 @@ Features, requirements, and limitations
 * Advanced statistics: actual difficulty of each share as well as
   effective hashrate at the pool
 
-* Supports AMD RX5500, RX5700, Radeon VII, Vega,
-  590/580/570/480/470, 460/560, Fury, 390/290 and older AMD GPUs with
-  enough VRAM
+* Supports AMD RX6800, RX6900, RX5500, RX5600, RX5700, Radeon VII,
+  Vega, 590/580/570/480/470, 460/560, Fury, 390/290 and older AMD GPUs
+  with enough VRAM
 
-* Supports Nvidia 20x0, 16x0, 10x0 and 9x0 series as well as older
-  cards with enough VRAM
+* Supports Nvidia 30x0, 20x0, 16x0, 10x0 and 9x0 series as well as
+  older cards with enough VRAM
 
 * DAG file generation in the GPU for faster start-up and DAG epoch
   switches
@@ -251,7 +248,7 @@ Features, requirements, and limitations
   mining. Please note that you must add "-coin bci" to your command
   line (or "COIN: bci" to your "epools.txt" file) in order to mine BCI
 
-* Full compatibility with the industry standard Claymore’s Dual
+* Full compatibility with the industry standard Claymore's Dual
   Ethereum miner, including most of command-line options,
   configuration files, and remote monitoring and management.
 
@@ -269,7 +266,7 @@ are using the dual mining feature PhoenixMiner will mine for us for 35
 seconds every 65 minutes.
 
 While the miner is running, you can use some interactive commands.
-Press the key "h" while the miner’s console window has the keyboard
+Press the key "h" while the miner's console window has the keyboard
 focus to see the list of the available commands. The interactive
 commands are also listed at the end of the following section.
 
@@ -763,10 +760,14 @@ Mining options
 Hardware control options (you may specify these options per-GPU)
 ================================================================
 
+-hwm <n>
+   Frequency of hardware monitoring (one setting for all cards, the
+   default is 1): 0 - no HW monitoring or control, 1 - normal
+   monitoring, 2 to 5 - less frequent monitoring.
+
 -tt <n>
-   Set fan control target temperature (special values: 0 - no HW
-   monitoring on ALL cards, 1-4 - only monitoring on all cards with
-   30-120 seconds interval, negative - fixed fan speed at n %)
+   Set fan control target temperature (special values: 0 - no fan
+   control, negative - fixed fan speed at n %)
 
 -hstats <n>
    Level of hardware monitoring: 0 - temperature and fan speed only; 1
@@ -810,7 +811,9 @@ Hardware control options (you may specify these options per-GPU)
    Vega, 4 - Radeon VII, Navi; default: 0)
 
 -tmax <n>
-   Set fan control max temperature (0 for default)
+   Set fan control max temperature (0 for default). If this feature is
+   not supported by the driver, "-ttli" is set to the same temperature
+   instead
 
 -powlim <n>
    Set GPU power limit in % (from -75 to 75, 0 for default)
@@ -893,12 +896,28 @@ Hardware control options (you may specify these options per-GPU)
    card is shown as “unsupported”.
 
 -rxboost <n>
-   Memory refresh rate on AMD cards (0 - default values, 1 -
-   predefined value that should work on most cards, 2 to 100 -
-   increasingly aggressive settings). If you want to fine tune the
-   value, you may run the miner with "-rxboost 1", write down the
-   corresponding "-vmr" values that are showed in the log file, and
-   then use "-vmr" instead with adjusted values.
+   Memory refresh rate on AMD cards (0 - default value, 1 - predefined
+   value that should work on most cards, 2 to 100 - increasingly
+   aggressive settings). If you want to fine tune the value, you may
+   run the miner with "-rxboost 1", write down the corresponding
+   "-vmr" values that are showed in the log file, and then use "-vmr"
+   instead with adjusted values.
+
+-vmdag <n>
+   Reset straps to default during DAG generation (default: 1)
+
+-mcdag <n>
+   Reset GPU memory clock to default during DAG generation. Nvidia
+   only, default: 0 (turned off). This may allow you to set higher
+   memory overclock on your Nvidia cards without risking corrupt DAG
+   buffer, which can lead to excessive number of stale shares.
+
+   Under Linux this option will execute the "daggen.sh" script (if
+   present in the current directory) for each GPU, passing the GPU
+   index as the first argument, and PCIE bus ID as second argument.
+   The miner will then wait for about 7 seconds before starting DAG
+   generation to allow the script enough time to reset the memory
+   overclock.
 
 
 General Options
